@@ -88,3 +88,14 @@ body {
 .fs-8 {
   font-size: 12px;
 }
+
+.image-tile {
+  height: 8em;
+  background-size: cover;
+  display: flex;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.image-tile a {
+  mix-blend-mode: difference;
+}
