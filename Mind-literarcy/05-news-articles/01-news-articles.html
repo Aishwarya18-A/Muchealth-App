@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Muchealth</title>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+
+  <body class="bg-brand-light">
+    <main class="p-4 app-main">
+      <div class="mb-3">
+        <h5>NEWS ARTICLES ABOUT MENTAL WELLBEING</h5>
+      </div>
+      <ul class="list-group m-0 p-0" id="topics-list"></ul>
+    </main>
+    <script>
+      const list = [
+        {
+          label: "Depression and anxiety increase the risk of a heart attack",
+          url: "https://www.thestar.com.my/lifestyle/health/2022/07/26/don039t-ignore-depression-and-anxiety-it-can-lead-to-a-heart-attack",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Tackling anxiety and depression",
+          url: "https://www.thestar.com.my/news/nation/2018/10/20/tackling-anxiety-and-depression-experts-these-are-the-most-common-illness-workers-face-now/",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+        {
+          label: "Putting the global spotlight on mental health",
+          url: "https://www.thestar.com.my/lifestyle/health/matters-of-the-mind/2022/07/04/putting-the-global-spotlight-on-mental-health",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Anxiety disorders in children",
+          url: "https://www.thestar.com.my/lifestyle/family/2016/12/04/anxiety-disorders-in-children",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+        {
+          label: "Analysis: Mental health issues growing more serious",
+          url: "https://www.thestar.com.my/news/nation/2021/07/02/analysis-mental-health-issues-growing-more-serious",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Mental health matters",
+          url: "https://www.thestar.com.my/news/education/2021/01/31/mental-health-mattershealth-matters",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Depression can happen to anyone",
+          url: "https://www.thestar.com.my/news/nation/2018/09/02/depression-can-happen-to-anyone-this-mental-illness-can-be-triggered-by-many-factors-but-fortunately",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Helping bipolar patients cope",
+          url: "https://www.thestar.com.my/lifestyle/health/2013/07/14/helping-bipolar-patients-cope",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Childhood trauma is most strongly linked to this personality disorder, study shows",
+          url: "https://www.thestar.com.my/lifestyle/health/2019/12/28/childhood-trauma-is-most-strongly-linked-to-this-personality-disorder",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "When your teenager has eating troubles",
+          url: "https://www.thestar.com.my/lifestyle/health/2021/10/01/when-your-teenager-has-eating-troubles",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Eating disorder",
+          url: "https://www.thestar.com.my/lifestyle/health/2006/12/14/eating-disorder",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Preventing eating disorders in teens",
+          url: "https://www.thestar.com.my/lifestyle/viewpoints/teens-and-tweens/2013/05/22/preventing-eating-disorders-in-teens",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Eating disorders can affect anyone, regardless of gender or size",
+          url: "https://www.thestar.com.my/lifestyle/health/2021/06/16/eating-disorders-can-affect-anyone-regardless-of-gender-or-size",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Managing compelling obsessions",
+          url: "https://www.thestar.com.my/lifestyle/viewpoints/tell-me-about/2011/11/30/managing-compelling-obsessions",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Understanding ADHD",
+          url: "https://www.thestar.com.my/lifestyle/family/features/2009/10/18/understanding-adhd",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "What is ADHD primer?",
+          url: "https://www.thestar.com.my/lifestyle/health/2005/12/04/adhd-primer",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Students with autism learning to cope with pandemic",
+          url: "https://www.thestar.com.my/news/nation/2021/05/19/students-with-autism-learning-to-cope-with-pandemic",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Malaysian parents find purpose through living with autism",
+          url: "https://www.thestar.com.my/lifestyle/family/2021/04/02/living-life-to-the-fullest-despite-autism",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "INTERACTIVE: Letting Go - How Parents of Young Autistic Adults are Teaching Independence",
+          url: "https://www.thestar.com.my/news/nation/2021/06/18/interactive-letting-go---how-parents-of-young-autistic-adults-are-teaching-independence",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Destigmatising mental health in Malaysia",
+          url: "https://www.freemalaysiatoday.com/category/leisure/health/2021/08/20/destigmatising-mental-health-in-malaysia/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "There’s no need to feel down about depression",
+          url: "https://www.freemalaysiatoday.com/category/leisure/health/2021/06/28/theres-no-need-to-feel-down-about-depression/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "‘Suicidal thoughts don’t vanish in jail’",
+          url: "https://www.freemalaysiatoday.com/category/nation/2022/07/09/suicidal-thoughts-dont-vanish-in-jail/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "FIVE signs you’re depressed and need help",
+          url: "https://www.freemalaysiatoday.com/category/leisure/health/2021/05/17/5-signs-youre-depressed-and-need-help/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: " FIVE ways to look after yourself when you are feeling down",
+          url: "https://www.freemalaysiatoday.com/category/leisure/health/2022/07/02/5-ways-to-look-after-yourself-when-you-are-feeling-down/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "The link between diet and mental health",
+          url: "https://www.freemalaysiatoday.com/category/leisure/food/2021/12/13/the-link-between-diet-and-mental-health/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Autism spectrum disorder and its link to parental depression",
+          url: "https://www.freemalaysiatoday.com/category/leisure/health/2021/11/20/autism-spectrum-disorder-and-its-link-to-parental-depression/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "FIVE Mental health disorders linked to substance abuse",
+          url: "https://stg.freemalaysiatoday.com/category/leisure/health/2021/07/05/5-mental-health-disorders-that-are-linked-to-substance-abuse/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Bulimia: not something you want to keep bringing up",
+          url: "https://www.freemalaysiatoday.com/category/leisure/health/2022/01/05/bulimia-not-something-you-want-to-keep-bringing-up",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Understanding obsessive-compulsive disorder (OCD)",
+          url: "https://stg.freemalaysiatoday.com/category/leisure/2020/07/14/understanding-obsessive-compulsive-disorde",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "The hidden struggles of living on the spectrum",
+          url: "https://www.freemalaysiatoday.com/category/nation/2022/04/02/normal-looking-people-who-suffer-on-the-spectrum",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Addicted to sex: It isn’t as raunchy as you think",
+          url: "https://stg.freemalaysiatoday.com/category/leisure/2018/07/18/addicted-to-sex-it-isnt-as-raunchy-as-you-think/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        
+
+      ];
+      const listElement = document.getElementById("topics-list");
+      const renderList = (_list) => {
+        const listItems = _list.map((_item) => {
+          return `
+          <li
+            class="list-group-item border-0 border-bottom bg-white image-tile"
+            style="background-image: url(${_item.image})"
+          >
+              <a class="d-flex align-items-center justify-content-between text-decoration-none text-secondary" href="${_item.url}" target="_blank">
+                  <div class="d-flex">
+                      <div class="d-flex align-items-center">
+                          <h5 class="text-uppercase fs-7 mb-0">${_item.label}</h5>
+                      </div>
+                  </div>
+              </a>
+          </li>
+          `;
+        });
+        listElement.innerHTML = listItems.join("");
+      };
+      const filterList = (event) => {
+        const value = event?.target?.value?.trim();
+        if (!value) renderList(list);
+        const newList = list?.filter((_item) => {
+          const _label = (_item?.label || "").toLowerCase();
+          return _label.indexOf(value?.toLowerCase()) >= 0;
+        });
+        renderList(newList);
+      };
+      renderList(list);
+    </script>
+  </body>
+</html>
