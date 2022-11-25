@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Muchealth</title>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+
+  <body class="bg-brand-light">
+    <main class="p-4 app-main">
+      <div class="mb-3">
+        <h5>REFERENCES</h5>
+      </div>
+      <ul class="list-group m-0 p-0" id="topics-list"></ul>
+    </main>
+    <script>
+      const list = [
+        {
+          label: "Ministry of Health Malaysia. Malaysian dietary guidelines key message 3–be physically active everyday; 2010.",
+          url: "https://www.google.com/",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Mayo Clinic. Exercise intensity: How to measure it. Accessed 19 September, 2019.",
+          url: "https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/exercise-intensity/art-20046887",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+        {
+          label: "Centers for Disease Control and Prevention. Measuring physical activity intensity. Accessed 19 September, 2019.",
+          url: "https://www.cdc.gov/physicalactivity/basics/measuring/",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Malaysian Society of Hypertension. What is high blood pressure and a healthy lifestyle? Accessed 8 October, 2019.",
+          url: "http://msh.my",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+        {
+          label: "Ministry of Health Malaysia. 4th Edition of clinical practice guidelines: Management of dyslipidemia; 2011.",
+          url: "https://www.google.com/",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Ministry of Health Malaysia. Clinical practice guidelines: Management of type 2 diabetes mellitus (5th Edition); 2015.",
+          url: "https://www.google.com/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Diabetes Malaysia. Starting to exercise. Accessed 8 October, 2019.",
+          url: "https://www.dietitians.org.my",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Bergmann N, et al. Endocr Connect 2014;3:R55–R80.",
+          url: "https://www.google.com/",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "Mayo Clinic. Stress management. Accessed 19 September, 2019.",
+          url: "https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/exercise-and-stress/art-20044469?pg=2",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "American Heart Association. Get moving: Easy tips to get active! Accessed 8 October, 2019.",
+          url: "https://www.heart.org/en/healthy-living/fitness/getting-active/get-real-about-getting-active#.vwrvovl9601",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        {
+          label: "WebMD. How to start an exercise program. Accessed 19 September, 2019.",
+          url: "https://www.webmd.com/fitness-exercise/default.htm?page=1",
+          image: "/assets/img/article/diabetes.jpeg",
+        },
+        ];
+      const listElement = document.getElementById("topics-list");
+      const renderList = (_list) => {
+        const listItems = _list.map((_item) => {
+          return `
+          <li
+            class="list-group-item border-0 border-bottom bg-white image-tile"
+            style="background-image: url(${_item.image})"
+          >
+              <a class="d-flex align-items-center justify-content-between text-decoration-none text-secondary" href="${_item.url}" target="_blank">
+                  <div class="d-flex">
+                      <div class="d-flex align-items-center">
+                          <h5 class="text-uppercase fs-7 mb-0">${_item.label}</h5>
+                      </div>
+                  </div>
+              </a>
+          </li>
+          `;
+        });
+        listElement.innerHTML = listItems.join("");
+      };
+      const filterList = (event) => {
+        const value = event?.target?.value?.trim();
+        if (!value) renderList(list);
+        const newList = list?.filter((_item) => {
+          const _label = (_item?.label || "").toLowerCase();
+          return _label.indexOf(value?.toLowerCase()) >= 0;
+        });
+        renderList(newList);
+      };
+      renderList(list);
+    </script>
+  </body>
+</html>
