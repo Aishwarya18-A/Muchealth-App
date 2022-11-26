@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Muchealth</title>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+
+  <body class="bg-brand-light">
+    <main class="p-4 app-main">
+      <div class="mb-3">
+        <h5>REFERRENCES</h5>
+      </div>
+      <ul class="list-group m-0 p-0" id="topics-list"></ul>
+    </main>
+    <script>
+      const list = [
+        {
+          label: "Sleep Foundation. Sleep drive and your body clock.(accessed March 2016).",
+          url: "https://www.sleepfoundation.org/circadian-rhythm/sleep-drive-and-your-body-clock",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "NHS Choices. (2014). What is insomnia and how much sleep do we need? (accessed March 2016).",
+          url: "https://www.nhs.uk/Personalisation/Login.aspx?ReturnUrl=%2f",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+        {
+          label: "Robotham, D. Chakkalackal, L. Cyhlarova, E. (2011). Sleep Matters: the impact of sleep on mental health and wellbeing. Mental Health Foundation, London, published Jan 2011. Paper: ISBN 978-1-906162-65-8",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Cirelli, C. Tononi, G. (2008). Is sleep essential? PLoS Biol 6(8): e216.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Adam, M. Reteym J. Khatami, R. Landolt, H.P. (2006). Age-Related Changes in the Time Course of Vigilant Attention During 40 Hours Without Sleep in Men. (accessed March 2016).",
+          url: "http://www.journalsleep.org", 
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+
+        {
+          label: "Cajochen, C. Khalsa, S.B. Wyatt, J.K. Czeisler, C.A. Dijk, D.J. (1999). EEG and ocular correlates or circadian melatonin phase and human performance decrements during sleep loss. Am. J. Physiol. 277, R640-649.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Van Dongen, H.P. Maislin, G. Mullington, J.M. Dinges, D.F. (2003). The cumulative cost of additional wakefulness: dose-response effects on neurobehavioural functions and sleep physiology from chronic sleep restriction and total sleep deprivation. Sleep, 26, 117-126.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Blenky, G. Wesensten, N.J. Thorne, D.R. Thomas, M.L. Sing, H.C. et al. (2003). Patterns of performance degradation and restorationduring sleep restriction and subsequent recovery: a sleep dose response study. J. Sleep Res, 12, 1-12.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Vyazovskiy, V.V. Olcese, U. Hanlon, E.C. Nir, Y. Cirelli, C. Tononi, G. (2011). Local sleep in awake rats. Nature, 472, 443-447.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Colten, H.R. Altevogt, B.M. (2006). Sleep disorders and sleep deprivation: an unmet public health problem. (accessed March 2016).",
+          url: "http://www.ncbi.nlm.nih.gov/pubmed/20669438",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Harvard School of Public Health. Obesity prevention source: Sleep. (accessed March 2016).",
+          url: "http://www.hsph.harvard.edu/obesity-prevention-source/obesitycauses/sleep-and-obesity/",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Centers for Disease Control and Prevention. Insufficient sleep is a public health problem. (accessed March 2016).",
+          url: "http://www.cdc.gov/features/dssleep/",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Lo JC, Groeger JA, Cheng GH, Dijk DJ, Chee MW. (2015). Self-reported sleep duration and cognitive performance in older adults: a systematic review and meta-analysis. Sleep Med. 2016 Jan;17:87-98. doi: 10.1016/j.sleep.2015.08.021. Epub 2015 Sep 25. Review. PMID:26847980",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Artis, L. (2013). First ever Great British bedtime report launched. bedtime-report-launched/ (accessed March 2016).",
+          url: "http://www.sleepcouncil.org.uk",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Linton, S. et al. (2015). the effect of the work environment on future sleep disturbances: a systematic review. (accessed March 2016).",
+          url: "http://www.sciencedirect.com/science/article/pii/S1087079214001208",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Schmidt, M. (2014). The energy allocation function of sleep: a unifying theory of sleep, torpor, and continuous wakefulness. (accessed March 2016).",
+          url: "http://www.sciencedirect.com/science/article/pii/S0149763414001997",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Czeisler, C. (2015). Duration, timing and quality of sleep are each vital for health, performance and safety. (accessed March 2016).",
+          url: "http://www.sciencedirect.com/science/article/pii/S2352721814000138",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Lange, T. Perras, B. Fehm, H.L. Born, J. (2003). Sleep enhances the human antibody response to hepatitis A vaccination. (accessed March 2016).",
+          url: "http://www.ncbi.nlm.nih.gov/pubmed/14508028",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Cohen, S. Doyle, W.J. Alper C.M. Janicki-Deverts, D. Turner R.B. (2009). Sleep habits and susceptability to the common cold. (accessed March 2016).",
+          url: "http://www.ncbi.nlm.nih.gov/pubmed/19139325",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Irish, L. Kline, C. Gunn, H. Buysse, D. Hall, M. (2015). The role of sleep hygiene in promoting public health: A review of empiricalevidence. (accessed March 2016).",
+          url: "http://www.sciencedirect.com/science/article/pii/S1087079214001002",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Ruxton, C. Derbyshire, E. (2015). Does sleep affect weight management? Complete Nutrition. Vol 15. No. 1.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Hogenkamp, P.S. et al. (2013). Acute sleep deprivation increases portion size and affects food choice in young men. (accessed March 2016).",
+          url: "http://www.cbi.nlm.nih.gov/pubmed/23428257",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Van Cauter, E. Spiegel, K. Tasali, E. Leproult, R. (2008). Metabolic consequences of sleep and sleep loss. Sleep Medicine, 9, S23-S28.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Greer, S.M. Goldstein, A.M. Walker, M.P. (2013). The impact of sleep deprivation on food desire in the human brain. Nature Communications, 4, 2259",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Ruxton, C. Derbyshire, E. (2015). Does sleep affect weight management? Complete Nutrition. Vol 15. No. 1.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Quick, V. Shoff, S. Lohse, B. White, A. Horacek, T. Greene, G. (2015). Relationships of eating competence, sleep behaviours and quality, and overweight status among college students. (accessed March 2016).",
+          url: "http://www.sciencedirect.com/science/article/pii/S1471015315000811",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Turgiss, J. Allen, S. Xiao, S. (2006). Asleep on the job: the causes and consequences of employees’ disrupted sleep and how employers can help. (accessed March 2016).",
+          url: "http://www.vielife.com/uploads/files/AsleepOnTheJob.pdf",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Hamidovic, A. de Wit, H. (2009). Sleep deprivation increases cigarette smoking. (accessed March 2016).",
+          url: "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2706278/",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Rapp, K. Buechele, G. Weiland, S. (2007). Sleep duration and smoking cessation in student nurses. (accessed March 2016).",
+          url: "http://www.sciencedirect.com/science/article/pii/S0306460306003388?np=y",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Department for Transport. Think! Fatigue. (accessed March 2016).",
+          url: "http://think.direct.gov.uk/fatigue.html",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Horne, J.A. Reyner, L.A. (1995). Sleep related vehicle accidents. BMJ, 310, 565-567.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Durmer, J.S. Dinges, D.F. (2005). Neurocognitive consequences of sleep deprivation. Seminars in neurology, 25, No. 1.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Barger, L.K. Cade, B.E. Ayas, N.T. Cronin, J.W. Rosner, B. et al. (2005). Extended work shifts and the risk of motor vehicle crashes among interns. New England Journal of Medicine, 352, 125-134.",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        {
+          label: "Ftouni, S. Sletten, T.L. Howard, M. Anderson, C. Lenne, M.G. et al. (2013). Objective and subjective measures of sleepiness, and their associations with on road driving events in shift workers, Journal of Sleep Research, 22, 58-69",
+          url: "https://www.google.com",
+          image: "/assets/img/article/02-Hyp-1.png",
+        },
+        
+        ];
+      const listElement = document.getElementById("topics-list");
+      const renderList = (_list) => {
+        const listItems = _list.map((_item) => {
+          return `
+          <li
+            class="list-group-item border-0 border-bottom bg-white image-tile"
+            style="background-image: url(${_item.image})"
+          >
+              <a class="d-flex align-items-center justify-content-between text-decoration-none text-secondary" href="${_item.url}" target="_blank">
+                  <div class="d-flex">
+                      <div class="d-flex align-items-center">
+                          <h5 class="text-uppercase fs-7 mb-0">${_item.label}</h5>
+                      </div>
+                  </div>
+              </a>
+          </li>
+          `;
+        });
+        listElement.innerHTML = listItems.join("");
+      };
+      const filterList = (event) => {
+        const value = event?.target?.value?.trim();
+        if (!value) renderList(list);
+        const newList = list?.filter((_item) => {
+          const _label = (_item?.label || "").toLowerCase();
+          return _label.indexOf(value?.toLowerCase()) >= 0;
+        });
+        renderList(newList);
+      };
+      renderList(list);
+    </script>
+  </body>
+</html>
