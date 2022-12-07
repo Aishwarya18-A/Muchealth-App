@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Muchealth</title>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+
+  <body class="bg-brand-light">
+    <main class="p-4 app-main">
+      <div class="mb-3">
+        <h5>NEWS ARTICLES ON CKD</h5>
+      </div>
+      <ul class="list-group m-0 p-0" id="topics-list"></ul>
+    </main>
+    
+    <script>
+      const list = [
+        {
+          label: "Living with Chronic Kidney Disease- What you need to know?",
+          url: "https://www.news-medical.net/health/Living-with-Chronic-Kidney-Disease.aspx",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+        {
+          label: "Ultra-Processed Foods Lead to Higher Risk of Kidney Disease, New Study Finds",
+          url: "https://www.kidney.org/news/ultra-processed-foods-lead-to-higher-risk-kidney-disease-new-study-finds",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+        {
+          label: "Coronavirus: what risks do people with kidney disease face?",
+          url: "https://theconversation.com/coronavirus-what-risks-do-people-with-kidney-disease-face-137097",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+        {
+          label: "Four things’ parents can do to keep their kids’ kidneys healthy",
+          url: "https://theconversation.com/four-things-parents-can-do-to-keep-their-kids-kidneys-healthy-56390",
+          image: "/assets/img/article/01-Dia-2.png",
+        },
+
+        
+      ];
+      const listElement = document.getElementById("topics-list");
+      const renderList = (_list) => {
+        const listItems = _list.map((_item) => {
+          return `
+          <li
+            class="list-group-item border-0 border-bottom bg-white image-tile"
+            style="background-image: url(${_item.image})"
+          >
+              <a class="d-flex align-items-center justify-content-between text-decoration-none text-secondary" href="${_item.url}" target="_blank">
+                  <div class="d-flex">
+                      <div class="d-flex align-items-center">
+                          <h5 class="text-uppercase fs-7 mb-0">${_item.label}</h5>
+                      </div>
+                  </div>
+              </a>
+          </li>
+          `;
+        });
+        listElement.innerHTML = listItems.join("");
+      };
+      const filterList = (event) => {
+        const value = event?.target?.value?.trim();
+        if (!value) renderList(list);
+        const newList = list?.filter((_item) => {
+          const _label = (_item?.label || "").toLowerCase();
+          return _label.indexOf(value?.toLowerCase()) >= 0;
+        });
+        renderList(newList);
+      };
+      renderList(list);
+    </script>
+  </body>
+</html>
+
